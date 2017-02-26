@@ -1,0 +1,4 @@
+apiVersion: v1
+description: Authentication and authorization manager for taskcluster.
+name: auth
+version: 0.1.0

@@ -1,0 +1,10 @@
+# Default values for queue.
+# This is a YAML-formatted file.
+# Declare variables to be passed into your templates.
+replicaCount: 3
+image:
+  repository: imbstack/taskcluster-auth
+  tag: latest
+service:
+  name: auth
+  type: NodePort

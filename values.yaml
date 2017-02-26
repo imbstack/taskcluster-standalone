@@ -1,0 +1,20 @@
+# Default values for taskcluster.
+# This is a YAML-formatted file.
+# Declare variables to be passed into your templates.
+replicaCount: 1
+resources:
+  limits:
+    cpu: 100m
+    memory: 128Mi
+
+global:
+  node_env: production
+
+queue:
+  service:
+    internalPort: 12345
+    externalPort: 12345
+auth:
+  service:
+    internalPort: 12346
+    externalPort: 12346

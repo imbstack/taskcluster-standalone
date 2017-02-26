@@ -1,0 +1,4 @@
+apiVersion: v1
+description: TaskCluster is the task execution framework that supports Mozilla's continuous integration and release processes
+name: taskcluster
+version: 0.1.0

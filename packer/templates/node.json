@@ -1,0 +1,32 @@
+{
+  "variables": {
+    "service": null,
+    "docker_org": "imbstack"
+  },
+  "builders": [
+    {
+      "type": "docker",
+      "image": "node:7",
+      "commit": true,
+      "changes": [
+        "ENTRYPOINT [\"node\", \"/service/lib/main.js\"]"
+      ]
+    }
+  ],
+  "provisioners": [
+    {
+      "type": "shell",
+      "script": "scripts/node.sh",
+      "environment_vars": ["GIT_REPO=https://github.com/taskcluster/{{user `service`}}.git"]
+    }
+  ],
+  "post-processors": [
+    [
+      {
+        "type": "docker-tag",
+        "repository": "{{user `docker_org`}}/{{user `service`}}"
+      },
+      "docker-push"
+    ]
+  ]
+}

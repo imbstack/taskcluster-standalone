@@ -1,0 +1,4 @@
+apiVersion: v1
+description: The central queue coordinating execution of tasks in the taskcluster setup.
+name: queue
+version: 0.1.0
