@@ -7,14 +7,27 @@ resources:
     cpu: 100m
     memory: 128Mi
 
+service:
+  type:
+    NodePort
+
 global:
-  node_env: production
+  node_env: development
+  debug: "* -babel -express* -body-parser* -follow-redirects  -statsum -superagent -azure:agent"
 
 queue:
   service:
     internalPort: 12345
     externalPort: 12345
+    name: queue
+  image:
+    repository: imbstack/taskcluster-queue
+    cmd: server
 auth:
   service:
     internalPort: 12346
     externalPort: 12346
+    name: auth
+  image:
+    repository: imbstack/taskcluster-auth
+    cmd: server

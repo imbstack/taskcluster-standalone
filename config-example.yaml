@@ -1,0 +1,5 @@
+auth:
+  secrets:
+    PULSE_USERNAME: '...'
+    PULSE_PASSWORD: '...'
+    SENTRY_API_KEY: '...'
