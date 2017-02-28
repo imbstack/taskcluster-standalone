@@ -16,12 +16,13 @@ spec:
       containers:
       - name: {{ .Chart.Name }}
         image: "{{ .Values.image.repository }}"
-        args: [{{ .Values.image.cmd }}]
         env:
         - name: NODE_ENV
           value: {{ .Values.global.node_env }}
         - name: DEBUG
           value: {{ .Values.global.debug | quote }}
+        - name: PROC_NAME
+          value: {{ .Values.image.proc }}
         {{- range $key, $_ := .Values.secrets }}
         - name: {{ $key }}
           valueFrom:

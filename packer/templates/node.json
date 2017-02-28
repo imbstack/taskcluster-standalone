@@ -9,12 +9,17 @@
       "image": "node:7",
       "commit": true,
       "changes": [
-        "ENTRYPOINT [\"node\", \"lib/main.js\"]",
+        "ENTRYPOINT exec $(node /procparser.js)",
         "WORKDIR /service"
       ]
     }
   ],
   "provisioners": [
+    {
+      "type": "file",
+      "source": "scripts/procparser.js",
+      "destination": "/procparser.js"
+    },
     {
       "type": "shell",
       "script": "scripts/node.sh",

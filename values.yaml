@@ -22,7 +22,7 @@ queue:
     name: queue
   image:
     repository: imbstack/taskcluster-queue
-    cmd: server
+    proc: web
 auth:
   service:
     internalPort: 12346
@@ -30,4 +30,4 @@ auth:
     name: auth
   image:
     repository: imbstack/taskcluster-auth
-    cmd: server
+    proc: web
