@@ -35,3 +35,7 @@ Following is a non-exhaustive list of things I can think of that need to happen 
 - [ ] Services that run inside this must have instances of hardcoded urls (i.e. taskcluster.net) removed
 - [ ] taskcluster-client should be made to more easily work with Kubernetes routing
 - [ ] All dependencies on Pulse should be removed and replaced with taskcluster-pulse
+- [ ] Allow certain subsets of services to be disabled. e.g. sentrymanager in auth, lib-monitor support in most services, etc. This should be done with disable flags that can be set in config.yaml at install time to avoid needing creds.
+- [ ] Allow publishing of docs/schemas to be turned off in an installation for anybody who is using straight tc without any modifications of their own.
+- [ ] A script should be written that does all of the manual steps of install for you. This script is being pseudo-coded in src/main.js at the moment.
+- [ ] This Helm chart should be pushed to a Helm repository with signing.
