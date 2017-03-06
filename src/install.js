@@ -33,6 +33,8 @@ const genFile = './generated-config.yml';
 async function setupAuthAWS(cfg, gen, s3, iam) {
   gen.auth = gen.auth || {};
   gen.auth.secrets = gen.auth.secrets || {};
+  gen.global = gen.global || {};
+  gen.global.buckets = gen.global.buckets || cfg.aws.buckets;
   await Promise.map(_.values(cfg.aws.buckets), Bucket => s3.createBucket({
     Bucket,
   }).promise());

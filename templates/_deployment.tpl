@@ -26,6 +26,12 @@ spec:
           value: {{ .Values.service.internalPort | quote }}
         - name: PROC_NAME
           value: {{ .Values.image.proc }}
+        - name: DOCS_BUCKET
+          value: {{ .Values.global.buckets.rawDocs }}
+        - name: SCHEMAS_BUCKET
+          value: {{ .Values.global.buckets.schemas }}
+        - name: REFS_BUCKET
+          value: {{ .Values.global.buckets.references }}
         {{- range $key, $_ := .Values.secrets }}
         - name: {{ $key }}
           valueFrom:

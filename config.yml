@@ -11,6 +11,7 @@ defaults:
       docs: null
       rawDocs: null
       references: null
+      schemas: null
 
   sentry:
     apiToken: !env SENTRY_API_TOKEN

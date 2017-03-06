@@ -23,7 +23,7 @@
     {
       "type": "shell",
       "script": "scripts/node.sh",
-      "environment_vars": ["GIT_REPO=https://github.com/taskcluster/{{user `service`}}.git"]
+      "environment_vars": ["GIT_REPO=https://github.com/imbstack/{{user `service`}}.git"]
     }
   ],
   "post-processors": [
