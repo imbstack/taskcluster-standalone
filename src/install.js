@@ -81,7 +81,7 @@ async function setupAzure(cfg, gen) {
     console.log('Table crypto already set up. Continuing...');
   } else {
     gen.auth.secrets.TABLE_SIGNING_KEY = crypto.randomBytes(48).toString('base64');
-    gen.auth.secrets.TABLE_CRYPTO_KEY = crypto.randomBytes(48).toString('base64');
+    gen.auth.secrets.TABLE_CRYPTO_KEY = crypto.randomBytes(32).toString('base64');
   }
 
   if (!gen.auth.secrets.ROOT_ACCESS_TOKEN) {
@@ -89,6 +89,9 @@ async function setupAzure(cfg, gen) {
                                                                .replace(/\//g,'_')
                                                                .replace(/\+/g,'-');
   }
+
+  gen.auth.secrets.AZURE_ACCOUNTS = gen.auth.secrets.AZURE_ACCOUNTS || '{}';
+
   if (gen.auth.secrets.AZURE_ACCOUNT_NAME && gen.auth.secrets.AZURE_ACCOUNT_KEY) {
     console.log('Azure account already configured. Continuing...');
   } else {
@@ -143,9 +146,13 @@ async function setupAzure(cfg, gen) {
   }
 }
 
-async function installAuth() {
+async function installAuth(cfg) {
   console.log('Installing auth service into Kubernetes');
-  const helm = spawn('helm', ['install', '--dry-run', '--debug', '--set', 'tags.authonly=true', '-f', genFile, '.']);
+  const helm = spawn('helm', ['install',
+                              '--namespace', cfg.helm.namespace,
+                              '--set', 'auth.install=true',
+                              '-f', genFile,
+                              '.']);
   helm.stdout.on('data', data => console.log(data.toString()));
   helm.stderr.on('data', data => console.error(data.toString()));
   await new Promise((accept, reject) => {
@@ -174,7 +181,7 @@ async function main() {
   await setupAuthAWS(cfg, gen, s3, iam);
   await setupAzure(cfg, gen);
   fs.writeFileSync(genFile, yaml.safeDump(gen));
-  await installAuth();
+  await installAuth(cfg);
 }
 
 if (!module.parent) {

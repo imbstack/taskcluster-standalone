@@ -1,5 +1,6 @@
 {{- define "taskcluster.deployment" }}
 {{- $topscope := . -}}
+{{- if or .Values.install .Values.global.installAll -}}
 apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
@@ -21,6 +22,8 @@ spec:
           value: {{ .Values.global.node_env }}
         - name: DEBUG
           value: {{ .Values.global.debug | quote }}
+        - name: PORT
+          value: {{ .Values.service.internalPort | quote }}
         - name: PROC_NAME
           value: {{ .Values.image.proc }}
         {{- range $key, $_ := .Values.secrets }}
@@ -32,4 +35,5 @@ spec:
         {{- end }}
         ports:
         - containerPort: {{ .Values.service.internalPort }}
+{{- end }}
 {{- end }}

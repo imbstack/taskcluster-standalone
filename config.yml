@@ -1,4 +1,7 @@
 defaults:
+  helm:
+    namespace: !env HELM_APP_NAMESPACE
+
   aws:
     accessKeyId: !env AWS_ACCESS_KEY
     secretAccessKey: !env AWS_SECRET_KEY

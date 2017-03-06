@@ -1,4 +1,5 @@
 {{- define "taskcluster.secrets" }}
+{{- if or .Values.install .Values.global.installAll -}}
 apiVersion: v1
 kind: Secret
 metadata:
@@ -13,4 +14,5 @@ data:
   {{- range $key, $val := .Values.secrets }}
   {{ $key }}: {{ default "MISSING" $val | b64enc | quote }}
   {{- end }}
+{{- end }}
 {{- end }}

@@ -12,8 +12,9 @@ service:
     NodePort
 
 global:
-  node_env: development
+  node_env: production
   debug: "* -babel -express* -body-parser* -follow-redirects  -statsum -superagent -azure:agent"
+  installAll: false
 
 queue:
   service:

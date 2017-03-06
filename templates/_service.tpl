@@ -1,4 +1,5 @@
 {{- define "taskcluster.service" }}
+{{- if or .Values.install .Values.global.installAll -}}
 apiVersion: v1
 kind: Service
 metadata:
@@ -14,4 +15,5 @@ spec:
     name: {{ .Values.service.name }}
   selector:
     app: {{ template "fullname" . }}
+{{- end }}
 {{- end }}

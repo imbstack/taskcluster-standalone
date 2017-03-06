@@ -1,7 +1,25 @@
 defaults:
+  helm:
+    namespace: '...'
+
   aws:
     accessKeyId: '...'
     secretAccessKey: '...'
+    buckets:
+      private: '...'
+      public: '...'
+      docs: '...'
+      rawDocs: '...'
+      references: '...'
 
   sentry:
     apiToken: '...'
+
+  pulse:
+    username: '...'
+    password: '...'
+
+  azure:
+    subscriptionId: '...'
+    tenantId: '...'
+    authStorageAccount: '...'
