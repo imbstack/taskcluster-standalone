@@ -9,11 +9,11 @@ time being.
 Install
 -------
 
-First set up a Minikube cluster and install Helm. Then install Tiller with `Helm init`.
+First set up a Minikube cluster and install Helm. Install Tiller with `Helm init`. Next `yarn install`.
 
-To install onto a Kubernetes cluster, first copy `config-example.yaml` to `config.yaml` and then run
-`helm install -f config.yaml .`. To make changes once it has been installed, you can
-`helm update -f config.yaml <release name> .` where `release name` is the name of the release that was
+To install onto a Kubernetes cluster, first copy `user-config-example.yml` to `user-config.yml` and then
+`yarn start`. To make changes once it has been installed, you can
+`helm update -f generated-config.yml <release name> .` where `release name` is the name of the release that was
 created when you installed.
 
 

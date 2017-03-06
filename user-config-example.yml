@@ -1,0 +1,7 @@
+defaults:
+  aws:
+    accessKeyId: '...'
+    secretAccessKey: '...'
+
+  sentry:
+    apiToken: '...'

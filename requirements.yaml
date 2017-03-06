@@ -1,0 +1,9 @@
+dependencies:
+  - name: auth
+    repository: taskcluster/charts/auth
+    version: 0.1.0
+    enabled: auth.enabled, global.auth.enabled
+  - name: queue
+    repository: taskcluster/charts/queue
+    version: 0.1.0
+    enabled: queue.enabled, global.queue.enabled

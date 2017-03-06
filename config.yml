@@ -1,0 +1,24 @@
+defaults:
+  aws:
+    accessKeyId: !env AWS_ACCESS_KEY
+    secretAccessKey: !env AWS_SECRET_KEY
+    buckets:
+      private: null
+      public: null
+      docs: null
+      rawDocs: null
+      references: null
+
+  sentry:
+    apiToken: !env SENTRY_API_TOKEN
+
+  # TODO: We won't need this at all once taskcluster-pulse
+  # is the only service we use
+  pulse:
+    username: null
+    password: null
+
+  azure:
+    subscriptionId: !env AZURE_SUBSCRIPTION_ID # Grab this from Azure Portal > Billing > Overview
+    tenantId: !env TENANT_ID  # Grab this from "Directory ID" in Azure Portal > More Services > Azure Active Directory > Properties
+    authStorageAccount: !env AUTH_STORAGE_ACCOUNT

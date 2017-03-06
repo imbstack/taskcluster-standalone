@@ -19,3 +19,9 @@
 .project
 .idea/
 *.tmproj
+
+/node_modules/
+/src/
+/lib/
+/packer/
+/test/

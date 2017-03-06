@@ -1,0 +1,37 @@
+{
+  "name": "taskcluster-standalone",
+  "private": true,
+  "version": "0.1.0",
+  "author": "Brian Stack <bstack@mozilla.com>",
+  "description": "Setup a taskcluster install in Kubernetes",
+  "license": "MPL-2.0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/imbstack/taskcluster-standalone.git"
+  },
+  "scripts": {
+    "compile": "babel-compile -p taskcluster src:lib test:.test",
+    "pretest": "npm run compile",
+    "test": "mocha .test/lint.js .test/*_test.js",
+    "start": "npm run compile && node lib/install.js"
+  },
+  "dependencies": {
+    "aws-sdk": "^2.22.0",
+    "azure-arm-resource": "^1.6.1-preview",
+    "azure-arm-storage": "^0.15.0-preview",
+    "babel-compile": "^2.0.0",
+    "babel-eslint": "^7.1.1",
+    "babel-preset-taskcluster": "^3.0.0",
+    "babel-runtime": "^6.23.0",
+    "bluebird": "^3.5.0",
+    "eslint-config-taskcluster": "^2.0.0",
+    "eslint-plugin-taskcluster": "^1.0.2",
+    "js-yaml": "^3.8.2",
+    "lodash": "^4.17.4",
+    "mocha": "^3.2.0",
+    "mocha-eslint": "^3.0.1",
+    "ms-rest-azure": "^1.15.5",
+    "typed-env-config": "^1.1.1"
+  },
+  "main": "./lib/install.js"
+}
